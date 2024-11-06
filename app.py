@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+# 日本語フォントの設定
+font_path = 'https://www.ryhintl.com/font-nasu/Nasu-Regular.ttf'  # 適切な日本語フォントのパスに変更してください
+font_prop = fm.FontProperties(fname=font_path)
+plt.rcParams['font.family'] = font_prop.get_name()
+
 # サンプルデータの作成
 data = {
     'ID': [1, 2, 3, 4, 5],
