@@ -45,11 +45,12 @@ df['売上'] = pd.to_numeric(df['売上'], errors='coerce')
 st.subheader('データ型')
 st.write(df.dtypes)
 
-# 売上の箱ひげ図
-plt.figure(figsize=(10, 6))
-plt.boxplot(df['売上'].dropna())
-plt.title('売上の箱ひげ図')
-plt.show()
+# 売上の箱ひげ図の描画
+st.subheader('売上の箱ひげ図')
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.boxplot(df['売上'].dropna())
+ax.set_title('売上の箱ひげ図')
+st.pyplot(fig)
 
 # IQRを使用して外れ値を検出
 Q1 = df['売上'].quantile(0.25)
@@ -59,5 +60,7 @@ lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
 
 outliers = df[(df['売上'] < lower_bound) | (df['売上'] > upper_bound)]
+
+# 外れ値の表示
 st.subheader('外れ値を検出')
 st.write("外れ値:", outliers)
