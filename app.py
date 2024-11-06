@@ -3,10 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 日本語フォントの設定
-plt.rcParams["font.family"] = "MS Meiryo"   # 使用するフォント
-plt.rcParams["font.size"] = 20 
-
 # サンプルデータの作成
 data = {
     'ID': [1, 2, 3, 4, 5],
@@ -53,7 +49,7 @@ st.write(df.dtypes)
 st.subheader('売上の箱ひげ図')
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.boxplot(df['売上'].dropna())
-ax.set_title('売上の箱ひげ図 - Revenue Boxplot')
+ax.set_title('Revenue Boxplot')
 #ax.set_title('売上の箱ひげ図 - Revenue Boxplot'.encode('utf-8').decode('utf-8'))
 st.pyplot(fig)
 
