@@ -64,4 +64,6 @@ outliers = df[(df['売上'] < lower_bound) | (df['売上'] > upper_bound)]
 
 # 外れ値の表示
 st.subheader('外れ値を検出')
+st.write("low:", lower_bound)
+st.write("upper:", upper_bound)
 st.write("外れ値:", outliers)
