@@ -49,8 +49,8 @@ st.write(df.dtypes)
 st.subheader('売上の箱ひげ図')
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.boxplot(df['売上'].dropna())
-#ax.set_title('売上の箱ひげ図 - Revenue Boxplot')
-ax.set_title('売上の箱ひげ図 - Revenue Boxplot'.encode('utf-8').decode('utf-8'))
+ax.set_title('売上の箱ひげ図 - Revenue Boxplot')
+#ax.set_title('売上の箱ひげ図 - Revenue Boxplot'.encode('utf-8').decode('utf-8'))
 st.pyplot(fig)
 
 # IQRを使用して外れ値を検出
