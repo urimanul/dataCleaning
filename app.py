@@ -17,7 +17,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Streamlitアプリの設定
-st.title('データフレームの表示と欠損値の処理')
+st.title('データフレーム表示と欠損値の処理')
 
 # 元のデータフレームの表示
 st.subheader('元のデータフレーム')
