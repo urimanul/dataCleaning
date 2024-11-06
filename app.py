@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 # サンプルデータの作成
 data = {
@@ -43,3 +44,20 @@ df['売上'] = pd.to_numeric(df['売上'], errors='coerce')
 # データ型の表示
 st.subheader('データ型')
 st.write(df.dtypes)
+
+# 売上の箱ひげ図
+plt.figure(figsize=(10, 6))
+plt.boxplot(df['売上'].dropna())
+plt.title('売上の箱ひげ図')
+plt.show()
+
+# IQRを使用して外れ値を検出
+Q1 = df['売上'].quantile(0.25)
+Q3 = df['売上'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = df[(df['売上'] < lower_bound) | (df['売上'] > upper_bound)]
+st.subheader('外れ値を検出')
+st.write("外れ値:", outliers)
