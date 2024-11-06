@@ -43,3 +43,20 @@ df['売上'] = pd.to_numeric(df['売上'], errors='coerce')
 # データ型の表示
 st.subheader('データ型')
 st.write(df.dtypes)
+
+# 名前の正規化（姓と名を分離）
+df[['姓', '名']] = df['名前'].str.extract('(.+)(.{1})')
+
+print(df[['姓', '名']])
+
+# 日付形式の統一
+df['入社日'] = pd.to_datetime(df['入社日'], format='mixed')
+
+# 年、月、日の抽出
+df['入社年'] = df['入社日'].dt.year
+df['入社月'] = df['入社日'].dt.month
+df['入社日'] = df['入社日'].dt.day
+
+print(df[['入社年', '入社月', '入社日']])
+
+
