@@ -47,7 +47,9 @@ st.write(df.dtypes)
 # 名前の正規化（姓と名を分離）
 df[['姓', '名']] = df['名前'].str.extract('(.+)(.{1})')
 
-print(df[['姓', '名']])
+# 正規化された名前の表示
+st.subheader('正規化された名前')
+st.dataframe(df[['姓', '名']])
 
 # 日付形式の統一
 df['入社日'] = pd.to_datetime(df['入社日'], format='mixed')
@@ -57,6 +59,8 @@ df['入社年'] = df['入社日'].dt.year
 df['入社月'] = df['入社日'].dt.month
 df['入社日'] = df['入社日'].dt.day
 
-print(df[['入社年', '入社月', '入社日']])
+# 日付形式の統一結果の表示
+st.subheader('日付形式の統一結果')
+st.dataframe(df[['入社年', '入社月', '入社日']])
 
 
