@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 日本語フォントの設定
-plt.rcParams["font.family"] = "DejaVu Serif"   # 使用するフォント
+plt.rcParams["font.family"] = "MS Meiryo"   # 使用するフォント
 plt.rcParams["font.size"] = 20 
 
 # サンプルデータの作成
