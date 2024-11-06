@@ -1,3 +1,4 @@
+import streamlit as st
 import pandas as pd
 import numpy as np
 
@@ -13,7 +14,13 @@ data = {
 }
 
 df = pd.DataFrame(data)
-print(df)
+
+# Streamlitアプリの設定
+st.title('データフレームの表示と欠損値の処理')
+
+# 元のデータフレームの表示
+st.subheader('元のデータフレーム')
+st.dataframe(df)
 
 # 欠損値を0で埋める
 df_filled = df.fillna(0)
@@ -21,14 +28,18 @@ df_filled = df.fillna(0)
 # 欠損値を含む行を削除
 df_dropped = df.dropna()
 
-print("0で埋めた結果:")
-print(df_filled)
-print("\n欠損値を含む行を削除した結果:")
-print(df_dropped)
+# 欠損値を0で埋めた結果の表示
+st.subheader('欠損値を0で埋めた結果')
+st.dataframe(df_filled)
+
+# 欠損値を含む行を削除した結果の表示
+st.subheader('欠損値を含む行を削除した結果')
+st.dataframe(df_dropped)
 
 # 年齢と売上を数値型に変換
 df['年齢'] = pd.to_numeric(df['年齢'], errors='coerce')
 df['売上'] = pd.to_numeric(df['売上'], errors='coerce')
 
-print(df.dtypes)
-
+# データ型の表示
+st.subheader('データ型')
+st.write(df.dtypes)
